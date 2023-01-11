@@ -1,0 +1,29 @@
+.news_card {
+  position: relative;
+
+  width: 400px;
+  height: 530px;
+  padding: 25px;
+
+  background: #ffffff;
+  border: 1px solid #eaeaea;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
+
+  overflow: hidden;
+
+  img {
+    position: absolute;
+    width: 400px;
+    height: 217px;
+    left: 0px;
+    top: 0px;
+  }
+
+  .read_more {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    margin-right: 6px;
+  }
+}

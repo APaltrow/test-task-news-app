@@ -1,0 +1,35 @@
+.search_container {
+  span {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #363636;
+  }
+  div {
+    position: relative;
+    margin: 10px 0px 40px 0px;
+  }
+
+  label {
+    input {
+      width: 600px;
+      height: 50px;
+      background: #ffffff;
+      color: #575757;
+      border: 1px solid #eaeaea;
+      box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.05);
+      border-radius: 5px;
+
+      padding: 0px 10px 0px 60px;
+    }
+    svg {
+      width: 20px;
+      height: 20px;
+
+      position: absolute;
+      left: 20px;
+      top: 15px;
+    }
+  }
+}
