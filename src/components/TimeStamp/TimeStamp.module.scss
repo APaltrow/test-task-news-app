@@ -1,3 +1,5 @@
+@import "../../sass/variables.scss";
+
 .timeStamp {
   position: relative;
   padding-left: 24px;
@@ -7,8 +9,8 @@
   margin-top: 217px;
   margin-bottom: 25px;
 
-  color: #363636;
-  font-size: 14px;
+  color: $font_color;
+  font-size: $fontS_14;
   opacity: 0.6;
 
   svg {

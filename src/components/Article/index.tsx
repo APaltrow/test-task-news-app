@@ -1,15 +1,22 @@
+import { FC } from "react";
+
 import style from "./Article.module.scss";
-export const Article = () => {
+
+export enum ArticleTypes {
+  BIG = "big",
+  SMALL = "small",
+}
+interface IArticle {
+  type: ArticleTypes;
+  title: string;
+  description: string;
+}
+
+export const Article: FC<IArticle> = ({ type, title, description }) => {
   return (
-    <article className={style.article}>
-      <h2 className={style.article_title}>
-        Google Chrome Google ChromeGoogle ChromeGoogle ChromeGoogle ChromeGoogle
-        ChromeGoogle ChromeGoogle Chrome
-      </h2>
-      <p className={style.article_description}>
-        Google Chrome is a web browser developed by Google, released in 2008.
-        Chrome is the world's most popular web browser today! Google Chrome is a
-      </p>
+    <article className={style[`article_${type}`]}>
+      <h2 className={style[`article_${type}_title`]}>{title}</h2>
+      <p className={style[`article_${type}_description`]}>{description}</p>
     </article>
   );
 };

@@ -1,9 +1,15 @@
+import { FC } from "react";
+
 import style from "./TimeStamp.module.scss";
 
-export const TimeStamp = () => {
+interface ITimeStamp {
+  date: string;
+}
+
+export const TimeStamp: FC<ITimeStamp> = ({ date }) => {
   return (
     <div className={style.timeStamp}>
-      <span> June 29th, 2021</span>
+      <span>{date}</span>
 
       <svg
         width="16"

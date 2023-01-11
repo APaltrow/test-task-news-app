@@ -1,19 +1,27 @@
+import { FC } from "react";
+
 import { Link } from "react-router-dom";
-import { Article } from "../Article";
+
+import { INewsArticle } from "../../@types/newsArticleTypes";
+import { Article, ArticleTypes } from "../Article";
 import { TimeStamp } from "../TimeStamp";
 
 import style from "./NewsCard.module.scss";
 
-export const NewsCard = () => {
-  const url =
-    "https://images.pexels.com/photos/10979720/pexels-photo-10979720.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+interface INewsCard {
+  newsCard: INewsArticle;
+}
+
+export const NewsCard: FC<INewsCard> = ({ newsCard }) => {
+  const { id, summary, title, imageUrl, publishedAt } = newsCard;
+
   return (
     <section className={style.news_card}>
-      <img src={url} alt={"my alttt"} />
-      <TimeStamp />
-      <Article />
+      <img src={imageUrl} alt={title || "News Picture"} />
+      <TimeStamp date={publishedAt} />
+      <Article type={ArticleTypes.SMALL} title={title} description={summary} />
 
-      <Link to={"news/5"}>
+      <Link to={`single-news-article/${id}`}>
         <span className={style.read_more}>Read more</span>
 
         <svg

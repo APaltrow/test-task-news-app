@@ -1,10 +1,12 @@
+@import "../../sass/variables.scss";
+
 .search_container {
   span {
     font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
+    font-weight: $fontWeig_6;
+    font-size: $fontS_16;
     line-height: 20px;
-    color: #363636;
+    color: $font_color;
   }
   div {
     position: relative;
@@ -15,10 +17,10 @@
     input {
       width: 600px;
       height: 50px;
-      background: #ffffff;
+      background: $article_color;
       color: #575757;
-      border: 1px solid #eaeaea;
-      box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.05);
+      border: $border;
+      box-shadow: $box_shadow;
       border-radius: 5px;
 
       padding: 0px 10px 0px 60px;

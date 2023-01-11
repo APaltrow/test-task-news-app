@@ -1,3 +1,4 @@
+@import "../../sass/variables.scss";
 .news_card {
   position: relative;
 
@@ -5,9 +6,9 @@
   height: 530px;
   padding: 25px;
 
-  background: #ffffff;
-  border: 1px solid #eaeaea;
-  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.05);
+  background: $article_color;
+  border: $border;
+  box-shadow: $box_shadow;
   border-radius: 5px;
 
   overflow: hidden;
@@ -22,8 +23,8 @@
 
   .read_more {
     font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
+    font-weight: $fontWeig_7;
+    font-size: $fontS_16;
     margin-right: 6px;
   }
 }

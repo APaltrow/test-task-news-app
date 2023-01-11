@@ -1,8 +1,10 @@
 @import "./sass/normalize.scss";
+@import "./sass/variables.scss";
 
 * {
   @include normalize;
 }
 
 .App {
+  background: $article_color;
 }

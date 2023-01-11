@@ -1,14 +1,15 @@
+@import "../../sass/variables.scss";
 .newsCatalog_container {
   .results {
     height: 25px;
-    border-bottom: 1px solid #eaeaea;
+    border-bottom: $border;
 
     span {
-      font-weight: 600;
-      font-size: 16px;
+      font-weight: $fontWeig_6;
+      font-size: $fontS_16;
       line-height: 20px;
 
-      color: #363636;
+      color: $font_color;
     }
   }
 }

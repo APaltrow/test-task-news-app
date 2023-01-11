@@ -1,0 +1,35 @@
+@import "../../sass/variables.scss";
+
+.singleNews_container {
+  position: relative;
+  width: $page_width;
+  height: $page_hight;
+  margin: 0 auto;
+
+  .newsImage_big {
+    position: absolute;
+    margin: 0 auto;
+
+    min-width: 100%;
+    height: 245px;
+
+    object-fit: cover;
+    object-position: 50% 60%;
+  }
+
+  a {
+    position: absolute;
+    height: 24px;
+    left: 168px;
+    top: 1186px;
+
+    font-style: normal;
+    font-weight: $fontWeig_7;
+    font-size: $fontS_16;
+    line-height: 150%;
+
+    svg {
+      margin-right: 6px;
+    }
+  }
+}

@@ -1,7 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
+import NewsCatalogSlice from "./Slices/NewsCatalogSlice";
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    newsSlice: NewsCatalogSlice,
+  },
 });
 
 export type RootState = ReturnType<typeof store.getState>;

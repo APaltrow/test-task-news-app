@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 
 import { Home } from "./pages/Home";
-import { News } from "./pages/News";
+import { SingleNewsArticle } from "./pages/SingleNewsArticle";
 import "./App.scss";
 
 const App = () => {
@@ -10,7 +10,12 @@ const App = () => {
     <div className="App">
       <Routes>
         {<Route index element={<Home />} />}
-        {<Route path="news/:id" element={<News />} />}
+        {
+          <Route
+            path="single-news-article/:id"
+            element={<SingleNewsArticle />}
+          />
+        }
       </Routes>
     </div>
   );
