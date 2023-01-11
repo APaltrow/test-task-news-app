@@ -1,0 +1,9 @@
+@import "./sass/normalize.scss";
+
+* {
+  @include normalize;
+}
+
+.App {
+  text-align: center;
+}
