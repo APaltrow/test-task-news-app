@@ -10,19 +10,18 @@ export const useSearch = () => {
   const [inputValue, setInputValue] = useState<string>("");
   const { debValue } = useDebounce(inputValue, 500);
 
+  const onInputValueChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value);
+  };
+
   useEffect(() => {
     if (searchValue !== inputValue) {
       dispatch(setSearchValue(debValue));
     }
   }, [debValue]);
 
-  const onInputValueChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
-  };
-
   return {
     inputValue,
-    debValue,
     onInputValueChange,
   };
 };

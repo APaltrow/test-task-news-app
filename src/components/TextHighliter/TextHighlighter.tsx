@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { wordsChecker } from "../../utils/wordsCheker";
 
 interface ITextHighlighter {
   textToSearch: string;
@@ -9,16 +10,13 @@ export const TextHighlighter: FC<ITextHighlighter> = ({
   textToSearch,
   text,
 }) => {
-  const isHighlighted = text.split(new RegExp(`(${textToSearch})`, "gi"));
+  const pattern = wordsChecker(textToSearch);
+  const isHighlighted = text.split(pattern);
 
   return (
     <span>
       {isHighlighted.map((part) =>
-        part.toLowerCase() === textToSearch.toLowerCase() ? (
-          <mark>{part}</mark>
-        ) : (
-          part
-        )
+        pattern.test(part.toLowerCase()) ? <mark>{part}</mark> : part
       )}
     </span>
   );

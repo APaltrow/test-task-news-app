@@ -8,7 +8,7 @@ import style from "./Search.module.scss";
 
 export const Search: FC = () => {
   const dispatch = useAppDispatch();
-  const { inputValue, debValue, onInputValueChange } = useSearch();
+  const { inputValue, onInputValueChange } = useSearch();
 
   useEffect(() => {
     return () => {
@@ -18,7 +18,7 @@ export const Search: FC = () => {
 
   return (
     <div className={style.search_container}>
-      <span>Filter by keywords: {debValue}</span>
+      <span>Filter by keywords:</span>
       <div>
         <label htmlFor="search">
           <input

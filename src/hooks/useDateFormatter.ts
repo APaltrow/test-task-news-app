@@ -10,8 +10,8 @@ export const useDateFormatter: DateFormatterType = (date) => {
   const month = new Date(date).toLocaleString("en-US", { month: "long" });
   const year = new Date(date).getFullYear();
 
-  const formatterDay = numberToOrdinal(day);
-  const formattedDate = `${month} ${formatterDay}, ${year}`;
+  const formattedDay = numberToOrdinal(day);
+  const formattedDate = `${month} ${formattedDay}, ${year}`;
 
   return {
     formattedDate,

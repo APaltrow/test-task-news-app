@@ -21,6 +21,9 @@ export const NewsCatalog: FC = () => {
   if (error) {
     return <Alert severity="error">{error}</Alert>;
   }
+  if (!results) {
+    return <Alert severity="warning">{"Nothing has been found ..."}</Alert>;
+  }
 
   return (
     <div className={style.newsCatalog_container}>

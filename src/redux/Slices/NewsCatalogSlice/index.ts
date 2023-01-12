@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { wordsChecker } from "../../../utils/wordsCheker";
 
 import { INewsArticle } from "../../../@types/newsArticleTypes";
 import { StateStatusList } from "../../../@types/stateTypes";
@@ -31,15 +32,17 @@ export const newsSlice = createSlice({
       state.searchValue = searchValue;
 
       if (searchValue) {
+        const pattern = wordsChecker(searchValue);
+
         /* Filtering by title here as first priority*/
-        const filterByTitle = state.news.filter((article) =>
-          article.title.toLowerCase().includes(searchValue.toLowerCase())
-        );
+        const filterByTitle = state.news.filter((article) => {
+          return pattern.test(article.title.toLowerCase());
+        });
         /* Filtering by description here as second priority */
         const filterByDescription = state.news.filter((article) => {
-          const isInArticleDescription = article.summary
-            .toLowerCase()
-            .includes(action.payload.toLowerCase());
+          const isInArticleDescription = pattern.test(
+            article.summary.toLowerCase()
+          );
 
           /* excluding potential dublicates from 'filterByTitle' */
           const isInFilterByTitle = !filterByTitle.find(
