@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, FC } from "react";
 
 import { useAppDispatch } from "../../@types/storeHoorksTypes";
 import { fetchNews } from "../../redux/Slices/NewsCatalogSlice";
@@ -8,7 +8,7 @@ import { NewsCatalog } from "../../components/NewsCatalog";
 
 import style from "./Home.module.scss";
 
-export const Home = () => {
+export const Home: FC = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {

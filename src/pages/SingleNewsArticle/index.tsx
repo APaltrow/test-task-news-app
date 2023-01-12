@@ -41,7 +41,7 @@ export const SingleNewsArticle: FC = () => {
   }
 
   return (
-    <div className={style.singleNews_container}>
+    <section className={style.singleNews_container}>
       {singleArticle?.title ? (
         <>
           <img
@@ -76,6 +76,6 @@ export const SingleNewsArticle: FC = () => {
         </svg>
         <span>Back to homepage</span>
       </Link>
-    </div>
+    </section>
   );
 };

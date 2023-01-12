@@ -14,6 +14,8 @@ export const fetchNews = createAsyncThunk<INewsArticle[]>(
 
 const initialState: INewsState = {
   news: [],
+  filteredNews: [],
+  searchValue: "",
   results: 0,
 
   status: StateStatusList.IDLE,
@@ -24,6 +26,42 @@ export const newsSlice = createSlice({
   name: "news",
   initialState,
   reducers: {
+    setSearchValue: (state, action: PayloadAction<string>) => {
+      const searchValue = action.payload;
+      state.searchValue = searchValue;
+
+      if (searchValue) {
+        /* Filtering by title here as first priority*/
+        const filterByTitle = state.news.filter((article) =>
+          article.title.toLowerCase().includes(searchValue.toLowerCase())
+        );
+        /* Filtering by description here as second priority */
+        const filterByDescription = state.news.filter((article) => {
+          const isInArticleDescription = article.summary
+            .toLowerCase()
+            .includes(action.payload.toLowerCase());
+
+          /* excluding potential dublicates from 'filterByTitle' */
+          const isInFilterByTitle = !filterByTitle.find(
+            (titleArticle) => titleArticle.id === article.id
+          );
+
+          return isInArticleDescription && isInFilterByTitle;
+        });
+
+        /* Merging filtered results */
+        state.filteredNews = [...filterByTitle, ...filterByDescription];
+        state.results = state.filteredNews.length;
+      } else {
+        state.filteredNews = [];
+        state.results = state.news.length;
+      }
+    },
+    clearSearchValue: (state) => {
+      state.searchValue = "";
+      state.filteredNews = [];
+      state.results = state.news.length;
+    },
     clearNewsCatalog: (state) => {
       state.news = [];
       state.results = 0;
@@ -56,6 +94,7 @@ export const newsSlice = createSlice({
 
 export const getNewsState = (state: RootState) => state.newsSlice;
 
-export const { clearNewsCatalog } = newsSlice.actions;
+export const { setSearchValue, clearNewsCatalog, clearSearchValue } =
+  newsSlice.actions;
 
 export default newsSlice.reducer;

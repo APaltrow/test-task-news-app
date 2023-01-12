@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { useDateFormatter } from "../../hooks/useDateFormatter";
 
 import style from "./TimeStamp.module.scss";
 
@@ -7,9 +8,11 @@ interface ITimeStamp {
 }
 
 export const TimeStamp: FC<ITimeStamp> = ({ date }) => {
+  const { formattedDate } = useDateFormatter(date);
+
   return (
     <div className={style.timeStamp}>
-      <span>{date}</span>
+      <span>{formattedDate}</span>
 
       <svg
         width="16"

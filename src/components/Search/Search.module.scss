@@ -25,6 +25,9 @@
 
       padding: 0px 10px 0px 60px;
     }
+    input:focus {
+      background-color: rgb(223, 244, 251);
+    }
     svg {
       width: 20px;
       height: 20px;

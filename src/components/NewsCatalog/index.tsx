@@ -12,7 +12,8 @@ import { Loader } from "../Loader";
 import style from "./NewsCatalog.module.scss";
 
 export const NewsCatalog: FC = () => {
-  const { news, results, status, error } = useAppSelector(getNewsState);
+  const { news, filteredNews, results, status, error } =
+    useAppSelector(getNewsState);
 
   if (status === StateStatusList.PENDING) {
     return <Loader />;
@@ -27,9 +28,13 @@ export const NewsCatalog: FC = () => {
         <span>{`Results: ${results}`}</span>
       </p>
       <div className={style.newsCatalog_cards}>
-        {news.map((newsCard) => (
-          <NewsCard key={newsCard.id} newsCard={newsCard} />
-        ))}
+        {filteredNews.length
+          ? filteredNews.map((newsCard) => (
+              <NewsCard key={newsCard.id} newsCard={newsCard} />
+            ))
+          : news.map((newsCard) => (
+              <NewsCard key={newsCard.id} newsCard={newsCard} />
+            ))}
       </div>
     </div>
   );

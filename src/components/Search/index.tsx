@@ -1,14 +1,31 @@
+import { FC, useEffect } from "react";
+import { useAppDispatch } from "../../@types/storeHoorksTypes";
+import { useSearch } from "../../hooks/useSearch";
+
+import { clearSearchValue } from "../../redux/Slices/NewsCatalogSlice";
+
 import style from "./Search.module.scss";
 
-export const Search = () => {
+export const Search: FC = () => {
+  const dispatch = useAppDispatch();
+  const { inputValue, debValue, onInputValueChange } = useSearch();
+
+  useEffect(() => {
+    return () => {
+      dispatch(clearSearchValue());
+    };
+  }, []);
+
   return (
     <div className={style.search_container}>
-      <span>Filter by keywords</span>
+      <span>Filter by keywords: {debValue}</span>
       <div>
         <label htmlFor="search">
           <input
             id="search"
             type="search"
+            value={inputValue}
+            onChange={onInputValueChange}
             placeholder="Type to search..."
             autoComplete="off"
           />
