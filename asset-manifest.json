@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/test-task-news-app/static/css/main.5aef5fdd.css",
+    "main.js": "/test-task-news-app/static/js/main.6c82c195.js",
+    "index.html": "/test-task-news-app/index.html",
+    "main.5aef5fdd.css.map": "/test-task-news-app/static/css/main.5aef5fdd.css.map",
+    "main.6c82c195.js.map": "/test-task-news-app/static/js/main.6c82c195.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5aef5fdd.css",
+    "static/js/main.6c82c195.js"
+  ]
+}
