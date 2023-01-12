@@ -15,8 +15,8 @@ export const TextHighlighter: FC<ITextHighlighter> = ({
 
   return (
     <span>
-      {isHighlighted.map((part) =>
-        pattern.test(part.toLowerCase()) ? <mark>{part}</mark> : part
+      {isHighlighted.map((part, idx) =>
+        pattern.test(part.toLowerCase()) ? <mark key={idx}>{part}</mark> : part
       )}
     </span>
   );

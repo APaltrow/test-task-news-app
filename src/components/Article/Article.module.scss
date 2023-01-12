@@ -21,14 +21,14 @@
   }
 
   &_description {
-    width: 350px;
+    max-width: 350px;
     height: 96px;
 
     font-weight: $fontWeig_4;
     font-size: $fontS_16;
     line-height: 150%;
 
-    @include text-elips(4);
+    @include text-elips(3);
   }
 }
 

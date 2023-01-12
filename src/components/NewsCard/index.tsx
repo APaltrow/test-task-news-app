@@ -14,12 +14,17 @@ interface INewsCard {
 
 export const NewsCard: FC<INewsCard> = ({ newsCard }) => {
   const { id, summary, title, imageUrl, publishedAt } = newsCard;
+  const shortDescription = `${summary.substring(0, 97)}...`;
 
   return (
     <section className={style.news_card}>
       <img src={imageUrl} alt={title || "News Picture"} />
       <TimeStamp date={publishedAt} />
-      <Article type={ArticleTypes.SMALL} title={title} description={summary} />
+      <Article
+        type={ArticleTypes.SMALL}
+        title={title}
+        description={shortDescription}
+      />
 
       <Link to={`single-news-article/${id}`}>
         <span className={style.read_more}>Read more</span>

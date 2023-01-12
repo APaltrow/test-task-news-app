@@ -12,12 +12,14 @@ export const Search: FC = () => {
 
   useEffect(() => {
     return () => {
-      dispatch(clearSearchValue());
+      if (inputValue) {
+        dispatch(clearSearchValue());
+      }
     };
   }, []);
 
   return (
-    <div className={style.search_container}>
+    <header className={style.header_container}>
       <span>Filter by keywords:</span>
       <div>
         <label htmlFor="search">
@@ -43,6 +45,6 @@ export const Search: FC = () => {
           </svg>
         </label>
       </div>
-    </div>
+    </header>
   );
 };

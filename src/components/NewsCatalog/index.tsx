@@ -26,7 +26,7 @@ export const NewsCatalog: FC = () => {
   }
 
   return (
-    <div className={style.newsCatalog_container}>
+    <main className={style.newsCatalog_container}>
       <p className={style.results}>
         <span>{`Results: ${results}`}</span>
       </p>
@@ -39,6 +39,6 @@ export const NewsCatalog: FC = () => {
               <NewsCard key={newsCard.id} newsCard={newsCard} />
             ))}
       </div>
-    </div>
+    </main>
   );
 };

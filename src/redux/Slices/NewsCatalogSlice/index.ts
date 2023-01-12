@@ -1,12 +1,12 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+
 import { wordsChecker } from "../../../utils/wordsCheker";
+import { getNews } from "../../../api/getNews";
 
 import { INewsArticle } from "../../../@types/newsArticleTypes";
 import { StateStatusList } from "../../../@types/stateTypes";
 import { INewsState } from "./NewsCatalogTypes";
 import { RootState } from "../../store";
-
-import { getNews } from "../../../api/getNews";
 
 export const fetchNews = createAsyncThunk<INewsArticle[]>(
   "news/fetchNews",
