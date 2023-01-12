@@ -8,14 +8,13 @@ import { NewsCatalog } from "../../components/NewsCatalog";
 
 import style from "./Home.module.scss";
 
-//TO DO : add loader and error comp
-
 export const Home = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(fetchNews());
   }, []);
+
   return (
     <div className={style.homePage_wrapper}>
       <Search />

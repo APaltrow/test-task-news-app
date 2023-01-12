@@ -1,16 +1,63 @@
-import { Link } from "react-router-dom";
+import { FC, useEffect } from "react";
+
+import { Link, useParams } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../@types/storeHoorksTypes";
+
+import { StateStatusList } from "../../@types/stateTypes";
+
+import { Alert } from "@mui/material";
+import { Loader } from "../../components/Loader";
 import { Article, ArticleTypes } from "../../components/Article";
+import {
+  clearSingleArticle,
+  fetchSingleNews,
+  getSingleNewsArticleState,
+} from "../../redux/Slices/SingleNewsArticleSlice";
 
 import style from "./SingleNewsArticle.module.scss";
 
-export const SingleNewsArticle = () => {
-  const url =
-    "https://images.pexels.com/photos/10979720/pexels-photo-10979720.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+export const SingleNewsArticle: FC = () => {
+  const dispatch = useAppDispatch();
+  const { id } = useParams();
+  const { status, error, singleArticle } = useAppSelector(
+    getSingleNewsArticleState
+  );
+
+  useEffect(() => {
+    if (id) {
+      dispatch(fetchSingleNews(+id));
+    }
+
+    return () => {
+      dispatch(clearSingleArticle());
+    };
+  }, []);
+
+  if (status === StateStatusList.PENDING) {
+    return <Loader />;
+  }
+  if (error) {
+    return <Alert severity="error">{error}</Alert>;
+  }
 
   return (
     <div className={style.singleNews_container}>
-      <img src={url} alt="myAlt" className={style.newsImage_big} />
-      <Article type={ArticleTypes.BIG} />
+      {singleArticle?.title ? (
+        <>
+          <img
+            src={singleArticle.imageUrl}
+            alt={singleArticle.title}
+            className={style.newsImage_big}
+          />
+          <Article
+            type={ArticleTypes.BIG}
+            title={singleArticle.title}
+            description={singleArticle.summary}
+          />
+        </>
+      ) : (
+        <Alert severity="error">{"Something went wrong ..."}</Alert>
+      )}
 
       <Link to={"/"}>
         <svg
